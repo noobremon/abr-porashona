@@ -20,6 +20,7 @@
             justify-content: center;
             align-items: center;
             padding: 1rem;
+            text-decoration: none;
         }
         .grid-card .card-title {
             margin-top: 1rem;
@@ -36,22 +37,22 @@
                     <div class="logo">Teacher Panel</div>
                 </div>
                 <nav class="sidebar-nav">
-                    <a href="#" class="nav-link active-link" data-view="view-dashboard">
+                    <a href="teacher.html" class="nav-link active-link">
                         <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
                     </a>
-                    <a href="#" class="nav-link" data-view="view-attendance">
+                    <a href="teacher_attendance.html" class="nav-link">
                         <i class="fas fa-user-check"></i><span>Attendance</span>
                     </a>
-                    <a href="#" class="nav-link" data-view="view-announcements">
+                    <a href="teacher_announcement.html" class="nav-link">
                         <i class="fas fa-bullhorn"></i><span>Announcements</span>
                     </a>
-                    <a href="#" class="nav-link" data-view="view-results">
+                    <a href="publish.html" class="nav-link">
                         <i class="fas fa-poll"></i><span>Results</span>
                     </a>
-                    <a href="#" class="nav-link" data-view="view-tracking">
+                    <a href="track.html" class="nav-link">
                         <i class="fas fa-chart-bar"></i><span>Student Tracking</span>
                     </a>
-                    <a href="#" class="nav-link" data-view="view-messaging">
+                    <a href="#" class="nav-link">
                         <i class="fas fa-comments"></i><span>Messaging</span>
                     </a>
                 </nav>
@@ -83,26 +84,26 @@
                 <section id="view-dashboard" class="content-view active-view">
                     <h2 class="view-title">Dashboard Overview</h2>
                     <div class="dashboard-grid">
-                        <div class="grid-card card-attendance">
+                        <a href="teacher_attendance.html" class="grid-card card-attendance">
                             <div class="card-icon"><i class="fas fa-calendar-plus"></i></div>
                             <h3 class="card-title">Mark Attendance</h3>
                             <p class="card-info">Update today's attendance records</p>
-                        </div>
-                        <div class="grid-card card-announcements">
+                        </a>
+                        <a href="teacher_announcement.html" class="grid-card card-announcements">
                             <div class="card-icon"><i class="fas fa-plus-circle"></i></div>
                             <h3 class="card-title">New Announcement</h3>
                             <p class="card-info">Post updates for students & parents</p>
-                        </div>
-                        <div class="grid-card card-results">
+                        </a>
+                        <a href="publish.html" class="grid-card card-results">
                             <div class="card-icon"><i class="fas fa-upload"></i></div>
                             <h3 class="card-title">Publish Results</h3>
                             <p class="card-info">Upload new exam scores</p>
-                        </div>
-                        <div class="grid-card card-tracking">
+                        </a>
+                        <a href="track.html" class="grid-card card-tracking">
                             <div class="card-icon"><i class="fas fa-search-plus"></i></div>
                             <h3 class="card-title">Track Students</h3>
                             <p class="card-info">View academic analytics</p>
-                        </div>
+                        </a>
                     </div>
                 </section>
 
