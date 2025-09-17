@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements - Teacher Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="teacher_announcement.css">
+</head>
+<body>
+    <div class="announcements-container">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-header">
+                    <div class="logo">Teacher Panel</div>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="teacher.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+                    <a href="teacher_attendance.html" class="nav-link"><i class="fas fa-user-check"></i><span>Attendance</span></a>
+                    <a href="#" class="nav-link active-link"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+                    <a href="#" class="nav-link"><i class="fas fa-users"></i><span>Students</span></a>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                <a href="index.html" class="btn-logout"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                <div class="header-details">
+                    <div class="teacher-info"><i class="fas fa-user-tie"></i><span>Welcome, <strong>Mrs. Davis</strong></span></div>
+                    <div class="institution-info"><i class="fas fa-school"></i><span>Springfield High | Physics</span></div>
+                </div>
+            </header>
+
+            <section class="content-area">
+                <div class="page-header">
+                    <h1 class="main-title">Manage Announcements</h1>
+                    <p class="tagline">Keep your class updated with important announcements.</p>
+                </div>
+                
+                <div class="panel creation-panel">
+                    <h3 id="form-title">Create New Announcement</h3>
+                    <form id="announcement-form">
+                        <input type="hidden" id="editing-id">
+                        <div class="form-row">
+                            <input type="text" id="announcement-title" placeholder="Announcement Title" required>
+                            <select id="announcement-category" required>
+                                <option value="">Select Category</option>
+                                <option value="Exam">Exam</option>
+                                <option value="PTM">PTM</option>
+                                <option value="Homework">Homework</option>
+                                <option value="Holiday">Holiday</option>
+                                <option value="General">General</option>
+                            </select>
+                        </div>
+                        <textarea id="announcement-desc" rows="4" placeholder="Description..." required></textarea>
+                        <div class="form-row">
+                            <div class="file-upload-wrapper">
+                                <label for="attachment"><i class="fas fa-paperclip"></i> Attach File</label>
+                                <input type="file" id="attachment">
+                                <span id="file-name">No file chosen</span>
+                            </div>
+                            <div class="share-options">
+                                <span>Share with:</span>
+                                <label><input type="checkbox" value="9"> Class 9</label>
+                                <label><input type="checkbox" value="10" checked> Class 10</label>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" id="form-submit-btn" class="btn-action publish">Publish Now</button>
+                            <button type="button" id="form-reset-btn" class="btn-action reset hidden">Cancel Edit</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="panel list-panel">
+                    <div class="filter-bar">
+                        <h3>Posted Announcements</h3>
+                        <select id="category-filter">
+                            <option value="all">Filter by All Categories</option>
+                            <option value="Exam">Exam</option>
+                            <option value="PTM">PTM</option>
+                            <option value="Homework">Homework</option>
+                            <option value="Holiday">Holiday</option>
+                            <option value="General">General</option>
+                        </select>
+                    </div>
+                    <div id="announcements-list" class="announcements-list">
+                        </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="teacher_announcement.js"></script>
+</body>
+</html>

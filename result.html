@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score & Review - Study App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="score_review.css">
+</head>
+<body>
+
+    <div class="score-container">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-header">
+                    <div class="logo">Student App</div>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="fas fa-shapes"></i><span>Features</span>
+                    </a>
+                    <a href="leaderboard.html" class="nav-link">
+                        <i class="fas fa-trophy"></i><span>Leaderboard</span>
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-medal"></i><span>Badges</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                <a href="index.html" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                <div class="header-info">
+                    <div class="student-details">
+                        <h2 id="student-name">Aryan Sharma</h2>
+                        <span id="student-rank" class="rank-tag">Rank: #12</span>
+                        <span id="student-level" class="level-tag">Level: 5</span>
+                    </div>
+                    <p class="motivational-tagline">Great job! Keep improving, you’re leveling up!</p>
+                </div>
+            </header>
+
+            <section class="content-area">
+                <div class="main-grid">
+                    <div class="summary-panel animate-on-load">
+                        <div class="stat-card">
+                            <i class="fas fa-list-check"></i>
+                            <div class="stat-info">
+                                <span class="stat-value" id="quizzes-taken">0</span>
+                                <span class="stat-label">Quizzes Taken</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-bullseye"></i>
+                            <div class="stat-info">
+                                <span class="stat-value" id="avg-score">0%</span>
+                                <span class="stat-label">Average Score</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-brain"></i>
+                            <div class="stat-info">
+                                <span class="stat-value" id="best-subject">N/A</span>
+                                <span class="stat-label">Best Subject</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="motivation-panel animate-on-load">
+                        <div class="xp-bar-container">
+                            <div class="xp-label">XP Progress</div>
+                            <div class="xp-bar">
+                                <div id="xp-bar-inner" class="xp-bar-inner"></div>
+                            </div>
+                        </div>
+                        <div class="achievements-container">
+                            <div class="achievement-label">Achievements</div>
+                            <div id="achievements-list" class="achievements-list">
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="progress-panel animate-on-load">
+                        <div class="panel-header">
+                            <h3>Score Improvement</h3>
+                            <div class="view-toggle">
+                                <button class="toggle-btn active" data-period="weekly">Weekly</button>
+                                <button class="toggle-btn" data-period="monthly">Monthly</button>
+                            </div>
+                        </div>
+                        <div id="progress-chart-container" class="bar-chart-container">
+                            </div>
+                    </div>
+
+                    <div class="review-panel animate-on-load">
+                        <div class="panel-header">
+                            <h3>Quiz Review</h3>
+                        </div>
+                        <div id="review-container" class="review-container">
+                           </div>
+                        <div class="mini-xp-bar-container">
+                            <div class="mini-xp-label">Review Progress</div>
+                            <div class="mini-xp-bar">
+                                <div id="mini-xp-bar-inner" class="mini-xp-bar-inner"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="quote-footer">"Every mistake is a step closer to mastery!"</p>
+            </section>
+        </main>
+    </div>
+
+    <script src="score_review.js"></script>
+</body>
+</html>

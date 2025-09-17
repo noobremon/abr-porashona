@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Attendance - Study App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="parent_attendance.css">
+</head>
+<body>
+
+    <div class="attendance-container">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-header">
+                    <div class="logo">Parent App</div>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="parent.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                <a href="index.html" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                <div class="header-details">
+                    <div class="parent-welcome">
+                        <i class="fas fa-user-shield"></i>
+                        <span>Welcome, <strong>Mrs. Sharma</strong></span>
+                    </div>
+                    <div class="child-info">
+                        <i class="fas fa-child"></i>
+                        <span>Attendance of: <strong>Aryan Sharma</strong></span>
+                    </div>
+                </div>
+            </header>
+
+            <section class="content-area">
+                <h1 class="main-title">Attendance Overview</h1>
+
+                <div class="tabs">
+                    <button class="tab-btn active" data-view="weekly-view">Weekly</button>
+                    <button class="tab-btn" data-view="monthly-view">Monthly</button>
+                </div>
+
+                <div id="weekly-view" class="view active-view">
+                    <div class="view-grid">
+                        <div class="chart-panel animate-on-load">
+                            <h3>Weekly Trend</h3>
+                            <div id="weekly-chart-container" class="bar-chart-container">
+                                </div>
+                        </div>
+                        <div class="table-panel animate-on-load">
+                            <h3>Weekly Log</h3>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Entry Time</th>
+                                            <th>Exit Time</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="weekly-table-body">
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="monthly-view" class="view">
+                     <div class="view-grid">
+                        <div class="chart-panel animate-on-load">
+                            <h3>Monthly Percentage</h3>
+                            <div id="monthly-chart-container" class="pie-chart-container">
+                                <div class="pie-chart"></div>
+                                <div class="pie-chart-legend"></div>
+                            </div>
+                        </div>
+                        <div class="table-panel animate-on-load">
+                            <h3>Monthly Log</h3>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Entry Time</th>
+                                            <th>Exit Time</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="monthly-table-body">
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="parent_attendance.js"></script>
+</body>
+</html>

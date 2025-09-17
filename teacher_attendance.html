@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Attendance - Study App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="teacher_attendance.css">
+</head>
+<body>
+    <div class="teacher-attendance-container">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-header">
+                    <div class="logo">Teacher Panel</div>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="teacher.html" class="nav-link">
+                        <i class="fas fa-home"></i><span>Home</span>
+                    </a>
+                    <div class="nav-expandable open">
+                        <div class="nav-link expandable-toggle">
+                            <i class="fas fa-chalkboard"></i><span>Classes</span>
+                        </div>
+                        <div class="expandable-menu scrollable-menu">
+                            <a href="#" class="sub-link" data-class="6">Class 6</a>
+                            <a href="#" class="sub-link" data-class="7">Class 7</a>
+                            <a href="#" class="sub-link" data-class="8">Class 8</a>
+                            <a href="#" class="sub-link" data-class="9">Class 9</a>
+                            <a href="#" class="sub-link" data-class="10">Class 10</a>
+                            <a href="#" class="sub-link" data-class="11">Class 11</a>
+                            <a href="#" class="sub-link" data-class="12">Class 12</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                <a href="index.html" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                <div class="header-details">
+                    <div class="teacher-info">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Welcome, <strong>Mr. Verma</strong></span>
+                    </div>
+                    <div class="institution-info">
+                        <i class="fas fa-school"></i>
+                        <span>Springfield High School</span>
+                    </div>
+                </div>
+            </header>
+
+            <section class="content-area">
+                <h1 class="main-title">Class Attendance Tracker</h1>
+                
+                <div class="main-grid">
+                    <div class="attendance-section">
+                        <div class="filter-bar">
+                             <div class="view-toggle-buttons">
+                                <button class="view-btn active" data-view-type="weekly">Weekly</button>
+                                <button class="view-btn" data-view-type="monthly">Monthly</button>
+                            </div>
+                            <div class="search-container">
+                                <input type="text" id="student-search" placeholder="Search for a student...">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+
+                        <div class="table-panel animate-on-load">
+                            <h3>Attendance Log: <span id="current-class-display">Class 9</span> (<span id="current-view-display">Weekly</span>)</h3>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th data-sort="roll">Roll No. <i class="fas fa-sort"></i></th>
+                                            <th data-sort="name">Student Name <i class="fas fa-sort"></i></th>
+                                            <th data-sort="entry">Entry Time <i class="fas fa-sort"></i></th>
+                                            <th data-sort="exit">Exit Time <i class="fas fa-sort"></i></th>
+                                            <th data-sort="status">Status <i class="fas fa-sort"></i></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="attendance-table-body">
+                                        </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="analytics-panel animate-on-load">
+                            <div class="chart-card">
+                                <h4>Overall Attendance</h4>
+                                <div class="pie-chart-container">
+                                    <div id="attendance-pie-chart" class="pie-chart"></div>
+                                    <div id="pie-chart-legend" class="pie-chart-legend"></div>
+                                </div>
+                            </div>
+                            <div class="chart-card">
+                                <h4>Trend (<span id="trend-period-display">This Week</span>)</h4>
+                                <div id="attendance-bar-chart" class="bar-chart-container">
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="home-panel animate-on-load">
+                        <div class="home-panel-header">
+                            <i class="fas fa-home"></i>
+                            <h2>Teacher Home</h2>
+                            <p>Welcome, Mr. Verma!</p>
+                        </div>
+                        <div class="home-quick-links">
+                            <a href="#" class="quick-link-card">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                                <span>Classes Overview</span>
+                            </a>
+                            <a href="#" class="quick-link-card">
+                                <i class="fas fa-bullhorn"></i>
+                                <span>Announcements</span>
+                            </a>
+                            <a href="#" class="quick-link-card">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Analytics Dashboard</span>
+                            </a>
+                        </div>
+                        <div class="home-panel-footer">
+                            <p>Quick Access & Tools</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="teacher_attendance.js"></script>
+</body>
+</html>

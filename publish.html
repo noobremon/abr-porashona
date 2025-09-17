@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Results - Teacher Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="teacher_results.css">
+</head>
+<body>
+    <div class="results-container">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-header">
+                    <div class="logo">Teacher Panel</div>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="teacher.html" class="nav-link"><i class="fas fa-home"></i><span>Home</span></a>
+                    <a href="teacher_attendance.html" class="nav-link"><i class="fas fa-user-check"></i><span>Attendance</span></a>
+                    <a href="teacher_announcements.html" class="nav-link"><i class="fas fa-bullhorn"></i><span>Announcements</span></a>
+                    <a href="#" class="nav-link active-link"><i class="fas fa-poll"></i><span>Results</span></a>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                <a href="index.html" class="btn-logout"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                <div class="header-details">
+                    <div class="teacher-info"><i class="fas fa-user-tie"></i><span>Welcome, <strong>Mrs. Davis</strong></span></div>
+                    <div class="institution-info"><i class="fas fa-school"></i><span>Springfield High | Physics</span></div>
+                </div>
+            </header>
+
+            <section class="content-area">
+                <div class="page-header">
+                    <h1 class="main-title">Upload & Manage Results</h1>
+                    <p class="tagline">Upload results easily and keep your students updated.</p>
+                </div>
+                
+                <div class="panel upload-panel">
+                    <h3><i class="fas fa-upload"></i> New Result Upload</h3>
+                    <form id="result-upload-form">
+                        <div class="form-grid">
+                            <select id="class-select" required><option value="">Select Class</option><option value="9">Class 9</option><option value="10">Class 10</option></select>
+                            <select id="section-select" required><option value="">Select Section</option><option value="A">Section A</option><option value="B">Section B</option></select>
+                            <select id="exam-type-select" required><option value="">Exam Type</option><option>Mid-Term</option><option>Final Exam</option><option>Unit Test</option></select>
+                            <input type="date" id="exam-date" required>
+                        </div>
+                        
+                        <div class="upload-toggle">
+                            <button type="button" class="toggle-btn active" data-method="file">📂 File Upload</button>
+                            <button type="button" class="toggle-btn" data-method="manual">📝 Manual Entry</button>
+                        </div>
+
+                        <div id="file-upload-area" class="upload-method-area active">
+                            <div class="file-drop-zone">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Drag & Drop your file here (CSV, XLSX)</p>
+                                <span>or</span>
+                                <input type="file" id="result-file" class="hidden">
+                                <label for="result-file" class="btn-action browse">Browse File</label>
+                            </div>
+                            <a href="#" class="template-link">Download CSV Template</a>
+                        </div>
+                        
+                        <div id="manual-entry-area" class="upload-method-area">
+                            <div class="manual-table-container">
+                                <table>
+                                    <thead>
+                                        <tr><th>Roll No.</th><th>Student Name</th><th>Marks</th><th>Grade</th><th></th></tr>
+                                    </thead>
+                                    <tbody id="manual-table-body">
+                                        </tbody>
+                                </table>
+                            </div>
+                            <button type="button" id="add-row-btn" class="btn-action add-row">+ Add Student</button>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="reset" class="btn-action reset">Reset</button>
+                            <button type="submit" class="btn-action upload">Upload Result</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="panel list-panel">
+                     <div class="filter-bar">
+                        <h3><i class="fas fa-history"></i> Upload History</h3>
+                        <input type="text" id="search-uploads" placeholder="Search by class or exam...">
+                    </div>
+                    <div id="uploaded-results-list" class="uploaded-results-list">
+                        </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <div id="toast-notification" class="toast"></div>
+
+    <script src="teacher_results.js"></script>
+</body>
+</html>

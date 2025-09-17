@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent View: Academic Progress - Study App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="academic_progress.css">
+</head>
+<body>
+    <div class="progress-container">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-header">
+                    <div class="logo">Student App</div>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="fas fa-shapes"></i><span>Features</span>
+                    </a>
+                    <a href="leaderboard.html" class="nav-link">
+                        <i class="fas fa-trophy"></i><span>Leaderboard</span>
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-medal"></i><span>Badges</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="sidebar-footer">
+                <a href="index.html" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                <div class="header-info">
+                    <div class="student-details">
+                        <h2 id="student-name">Progress Report For: Aryan Sharma</h2>
+                        <div class="student-meta">
+                            <span id="student-rank" class="meta-tag">Rank: #12</span>
+                            <span id="student-class" class="meta-tag">Class: 9</span>
+                            <span id="student-xp" class="meta-tag">XP: 1750</span>
+                        </div>
+                    </div>
+                    <p class="motivational-tagline">A complete overview of your child's progress.</p>
+                </div>
+            </header>
+
+            <section class="content-area">
+                <div class="main-grid">
+                    <div class="left-column">
+                        <div class="panel overall-performance-card animate-on-load">
+                            <h3>Overall Performance</h3>
+                            <div class="progress-circle-container">
+                                <div id="overall-progress-circle" class="progress-circle">
+                                    <div class="progress-circle-value">0%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel goal-tracker-card animate-on-load">
+                            <h3>Yearly Goal Tracker</h3>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-label">
+                                    <span>Target</span>
+                                    <span id="goal-progress-text">0%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div id="goal-progress-bar-inner" class="progress-bar-inner"></div>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="panel attendance-card animate-on-load">
+                            <h3>Attendance Summary</h3>
+                             <div class="attendance-stats">
+                                 <div id="total-days" class="stat">...</div>
+                                 <div id="present-percent" class="stat">...</div>
+                                 <div id="absent-percent" class="stat">...</div>
+                             </div>
+                        </div>
+                    </div>
+
+                    <div class="center-column">
+                        <div class="panel subjects-panel animate-on-load">
+                            <h3>Subject-Wise Progress</h3>
+                            <div id="subjects-grid" class="subjects-grid">
+                                </div>
+                        </div>
+                         <div class="panel graph-panel animate-on-load">
+                             <div class="panel-header">
+                                <h3>Marks Over Time</h3>
+                                <div class="view-toggle">
+                                    <button class="toggle-btn active" data-period="weekly">Weekly</button>
+                                    <button class="toggle-btn" data-period="monthly">Monthly</button>
+                                </div>
+                            </div>
+                            <div id="marks-chart-container" class="bar-chart-container">
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class="right-column">
+                        <div class="panel insights-panel animate-on-load">
+                            <h3>Academic Insights</h3>
+                            <div id="insights-content">
+                                </div>
+                        </div>
+                         <div class="panel achievements-panel animate-on-load">
+                            <h3>Unlocked Achievements</h3>
+                            <div id="achievements-list" class="achievements-list">
+                                </div>
+                        </div>
+                         <p class="quote-footer">Data as of September 17, 2025. Reports are updated weekly.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="academic_progress.js"></script>
+</body>
+</html>
