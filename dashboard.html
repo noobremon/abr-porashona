@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Study App</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="dashboard.css">
+    <style>
+        .content-grid .grid-card {
+            aspect-ratio: 1 / 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .grid-card .card-title {
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-header">
+                    <div class="logo">
+                        Student App
+                    </div>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="#" class="nav-link active-link">
+                        <i class="fas fa-shapes"></i>
+                        <span>Features</span>
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-users"></i>
+                        <span>About Us</span>
+                    </a>
+                </nav>
+                <div class="badges-section">
+                    <h4 class="badges-title">Badges</h4>
+                    <div class="badge-showcase">
+                        <img src="https://placehold.co/60x60/ff4655/ffffff?text=V" alt="Valorant Badge" title="First Kill">
+                        <img src="https://placehold.co/60x60/1a1a1a/ffffff?text=BGMI" alt="BGMI Badge" title="Winner Winner">
+                        <img src="https://placehold.co/60x60/73ff94/ffffff?text=S" alt="Study Badge" title="Top Scorer">
+                        <div class="badge-locked">
+                            <i class="fas fa-question"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                <a href="index.html" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-welcome">
+                        <i class="fas fa-hand-sparkles"></i>
+                        <span>Welcome, <strong id="userName">Student</strong></span>
+                    </div>
+                    <div class="stat-rank">
+                         <i class="fas fa-medal"></i>
+                        <span>Rank: <strong>#12</strong></span>
+                    </div>
+                </div>
+            </header>
+
+            <section class="content-grid">
+                <div class="grid-card card-subject">
+                    <div class="card-icon">
+                        <i class="fas fa-book-open-reader"></i>
+                    </div>
+                    <h3 class="card-title">Subject</h3>
+                    <p class="card-info">Your Courses</p>
+                </div>
+
+                <div class="grid-card card-attendance">
+                    <div class="card-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3 class="card-title">Attendance</h3>
+                    <p class="card-info">Track Your Presence</p>
+                </div>
+
+                <div class="grid-card card-leaderboard">
+                    <div class="card-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 class="card-title">Leaderboard</h3>
+                    <p class="card-info">See Top Performers</p>
+                </div>
+
+                <div class="grid-card card-score">
+                    <div class="card-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="card-title">Result</h3>
+                    <p class="card-info">Check Your Results</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+    // Check if user is logged in
+    document.addEventListener('DOMContentLoaded', function() {
+        const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+        
+        if (!user || !user.loggedIn) {
+            window.location.href = 'index.html';
+            return;
+        }
+        
+        // Display user's name
+        if (user.name) {
+            document.getElementById('userName').textContent = user.name;
+        }
+        
+        // Handle logout
+        const logoutBtn = document.querySelector('.btn-logout');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Clear user session
+                if (user) {
+                    user.loggedIn = false;
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                }
+                // Redirect to login
+                window.location.href = 'index.html';
+            });
+        }
+    });
+</script>
+</body>
+</html>

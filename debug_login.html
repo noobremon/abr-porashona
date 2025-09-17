@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Login</title>
+</head>
+<body>
+    <h1>Debug Login System</h1>
+    <button onclick="checkUsers()">Check Users</button>
+    <button onclick="clearUsers()">Clear Users</button>
+    <button onclick="testLogin()">Test Login Function</button>
+    <div id="output"></div>
+
+    <script>
+        function checkUsers() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            document.getElementById('output').innerHTML = '<pre>' + JSON.stringify(users, null, 2) + '</pre>';
+        }
+        
+        function clearUsers() {
+            localStorage.removeItem('users');
+            localStorage.removeItem('currentUser');
+            document.getElementById('output').innerHTML = '<p>Users cleared</p>';
+        }
+        
+        function testLogin() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            document.getElementById('output').innerHTML = '<p>Testing login function...</p>';
+            
+            // Simulate login with first user if exists
+            if (users.length > 0) {
+                const user = users[0];
+                document.getElementById('output').innerHTML += '<p>Found user: ' + user.email + '</p>';
+                
+                // Simulate password check
+                const password = prompt("Enter password for " + user.email);
+                if (password) {
+                    const hashedPassword = btoa(password);
+                    if (hashedPassword === user.password) {
+                        document.getElementById('output').innerHTML += '<p style="color: green">Login successful!</p>';
+                    } else {
+                        document.getElementById('output').innerHTML += '<p style="color: red">Incorrect password</p>';
+                    }
+                }
+            } else {
+                document.getElementById('output').innerHTML += '<p>No users found</p>';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Users</title>
+</head>
+<body>
+    <h1>Users Data</h1>
+    <button onclick="showUsers()">Show Users</button>
+    <div id="output"></div>
+
+    <script>
+        function showUsers() {
+            const users = localStorage.getItem('users');
+            document.getElementById('output').innerHTML = '<pre>' + JSON.stringify(JSON.parse(users || '[]'), null, 2) + '</pre>';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Study App - A Gamified Learning Platform</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="bg-animation-container"></div>
+
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">Student Study App</div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link">Contact Us</a></li>
+                <div id="authContainer">
+                    <a href="#" class="btn btn-primary btn-auth" id="authButton">Sign In / Sign Up</a>
+                    <div id="userDropdown" class="user-dropdown" style="display: none;">
+                        <button class="user-button" id="userButton">
+                            <span id="userGreeting">Welcome, User</span>
+                            <i class="fas fa-caret-down"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#" id="profileLink">Profile</a>
+                            <a href="#" id="settingsLink">Settings</a>
+                            <a href="#" id="logoutLink">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-text">
+                    <h1 id="hero-title"></h1>
+                    <p>Your learning adventure starts here. Play games, track progress, and connect with your school like never before. Ready to level up your future?</p>
+                    <a href="#features" class="btn btn-secondary">Explore Features</a>
+                </div>
+                <div class="hero-animation">
+                    <div class="block" id="block1"></div>
+                    <div class="block" id="block2"></div>
+                    <div class="block" id="block3"></div>
+                    <div class="block" id="block4"></div>
+                    <div class="animated-book">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section-title">Unlock Your Potential</h2>
+                <div class="features-grid">
+                    <div class="feature-card animate-on-scroll">
+                        <div class="card-icon-wrapper"><i class="fa-solid fa-brain"></i></div>
+                        <h3>Study</h3>
+                        <p>Access interactive lessons and quizzes designed for your curriculum.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="card-icon-wrapper"><i class="fa-solid fa-qrcode"></i></div>
+                        <h3>Smart Attendance</h3>
+                        <p>Check in to class instantly with our quick and easy attendance system.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="card-icon-wrapper"><i class="fa-solid fa-trophy"></i></div>
+                        <h3>Result Declaration</h3>
+                        <p>Get your exam results and performance reports the moment they're out.</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="card-icon-wrapper"><i class="fa-solid fa-bullhorn"></i></div>
+                        <h3>Announcements</h3>
+                        <p>Never miss important news or events from your school again.</p>
+                    </div>
+                     <div class="feature-card animate-on-scroll">
+                        <div class="card-icon-wrapper"><i class="fa-solid fa-star"></i></div>
+                        <h3>Leaderboard</h3>
+                        <p>Compete with friends, earn points, and climb to the top of the ranks!</p>
+                    </div>
+                    <div class="feature-card animate-on-scroll">
+                        <div class="card-icon-wrapper"><i class="fa-solid fa-chart-pie"></i></div>
+                        <h3>Student Analytics</h3>
+                        <p>Track your academic growth with detailed progress charts.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container contact-container">
+                <div class="contact-info">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p>Have a question or a brilliant idea? We’d love to hear from you! Drop us a message, and our team will get back to you as soon as possible.</p>
+                    <div class="contact-icon">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Combined Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-view="login">Login</button>
+                <button class="auth-tab" data-view="signup">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginView" class="auth-view active-view">
+                <h2 class="section-title">Welcome Back!</h2>
+                <form id="loginForm" class="auth-form active-form">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group password-group">
+                        <label for="loginPassword">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                            <i class="toggle-password fas fa-eye" data-target="loginPassword"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="rememberMe">
+                            <span class="checkmark"></span>
+                            Remember me
+                        </label>
+                        <a href="#" class="forgot-password">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    
+                    <p class="auth-switch">
+                        Don't have an account? 
+                        <a href="#" class="switch-to-signup" data-view="signup">Sign up</a>
+                    </p>
+                </form>
+            </div>
+
+            <!-- Signup View -->
+            <div id="signupView" class="auth-view">
+                <h2 class="section-title">Create an Account</h2>
+                <p class="auth-subtitle">Join us to get started</p>
+                
+                <div class="form-tabs">
+                    <button class="tab-link active" data-tab="student">Student</button>
+                    <button class="tab-link" data-tab="parent">Parent</button>
+                    <button class="tab-link" data-tab="teacher">Teacher</button>
+                </div>
+                
+                <!-- Student Signup Form -->
+                <form id="studentSignupForm" class="auth-form active-form">
+                    <div class="form-group">
+                        <label for="studentName">Full Name</label>
+                        <input type="text" id="studentName" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentEmail">Email</label>
+                        <input type="email" id="studentEmail" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentPhone">Phone Number</label>
+                        <input type="tel" id="studentPhone" placeholder="Enter your phone number" required>
+                    </div>
+                    
+                    <div class="form-group password-group">
+                        <label for="studentPassword">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="studentPassword" placeholder="Create a password" required>
+                            <i class="toggle-password fas fa-eye" data-target="studentPassword"></i>
+                        </div>
+                        <small>Must be at least 6 characters</small>
+                    </div>
+                    
+                    <div class="form-group password-group">
+                        <label for="studentConfirmPassword">Confirm Password</label>
+                        <div class="password-input">
+                            <input type="password" id="studentConfirmPassword" placeholder="Confirm your password" required>
+                            <i class="toggle-password fas fa-eye" data-target="studentConfirmPassword"></i>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Sign Up as Student</button>
+                    
+                    <p class="auth-switch">
+                        Already have an account? 
+                        <a href="#" class="switch-to-login" data-view="login">Login</a>
+                    </p>
+                </form>
+                
+                <!-- Parent Signup Form -->
+                <form id="parentSignupForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="parentName">Full Name</label>
+                        <input type="text" id="parentName" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="parentEmail">Email</label>
+                        <input type="email" id="parentEmail" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="parentPhone">Phone Number</label>
+                        <input type="tel" id="parentPhone" placeholder="Enter your phone number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentId">Student ID/Email</label>
+                        <input type="text" id="studentId" placeholder="Enter your child's student ID or email" required>
+                    </div>
+                    
+                    <div class="form-group password-group">
+                        <label for="parentPassword">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="parentPassword" placeholder="Create a password" required>
+                            <i class="toggle-password fas fa-eye" data-target="parentPassword"></i>
+                        </div>
+                        <small>Must be at least 6 characters</small>
+                    </div>
+                    
+                    <div class="form-group password-group">
+                        <label for="parentConfirmPassword">Confirm Password</label>
+                        <div class="password-input">
+                            <input type="password" id="parentConfirmPassword" placeholder="Confirm your password" required>
+                            <i class="toggle-password fas fa-eye" data-target="parentConfirmPassword"></i>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Sign Up as Parent</button>
+                    
+                    <p class="auth-switch">
+                        Already have an account? 
+                        <a href="#" class="switch-to-login" data-view="login">Login</a>
+                    </p>
+                </form>
+                
+                <!-- Teacher Signup Form -->
+                <form id="teacherSignupForm" class="auth-form">
+                    <div class="form-group">
+                        <label for="teacherName">Full Name</label>
+                        <input type="text" id="teacherName" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="teacherEmail">Email</label>
+                        <input type="email" id="teacherEmail" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="teacherPhone">Phone Number</label>
+                        <input type="tel" id="teacherPhone" placeholder="Enter your phone number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" placeholder="What do you teach?" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="qualification">Qualification</label>
+                        <input type="text" id="qualification" placeholder="Your qualification" required>
+                    </div>
+                    
+                    <div class="form-group password-group">
+                        <label for="teacherPassword">Password</label>
+                        <div class="password-input">
+                            <input type="password" id="teacherPassword" placeholder="Create a password" required>
+                            <i class="toggle-password fas fa-eye" data-target="teacherPassword"></i>
+                        </div>
+                        <small>Must be at least 6 characters</small>
+                    </div>
+                    
+                    <div class="form-group password-group">
+                        <label for="teacherConfirmPassword">Confirm Password</label>
+                        <div class="password-input">
+                            <input type="password" id="teacherConfirmPassword" placeholder="Confirm your password" required>
+                            <i class="toggle-password fas fa-eye" data-target="teacherConfirmPassword"></i>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Sign Up as Teacher</button>
+                    
+                    <p class="auth-switch">
+                        Already have an account? 
+                        <a href="#" class="switch-to-login" data-view="login">Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Authentication</title>
+    <style>
+        .modal {
+            display: block;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 480px;
+            width: 90%;
+        }
+        .auth-view {
+            display: none;
+        }
+        .auth-view.active-view {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Authentication</h1>
+    <button onclick="showLoginView()">Show Login View</button>
+    <button onclick="showSignupView()">Show Signup View</button>
+    
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-view="login">Login</button>
+                <button class="auth-tab" data-view="signup">Sign Up</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="loginView" class="auth-view active-view">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+
+            <!-- Signup View -->
+            <div id="signupView" class="auth-view">
+                <h2>Sign Up</h2>
+                <form id="studentSignupForm">
+                    <div class="form-group">
+                        <label for="studentName">Full Name</label>
+                        <input type="text" id="studentName" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentEmail">Email</label>
+                        <input type="email" id="studentEmail" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Switch between login and signup views
+        document.querySelectorAll('.auth-tab, .switch-to-login, .switch-to-signup').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetView = this.dataset.view || 
+                                 (this.classList.contains('switch-to-login') ? 'login' : 'signup');
+                
+                console.log('Switching to view:', targetView);
+                
+                // Update active tab
+                document.querySelectorAll('.auth-tab').forEach(tab => 
+                    tab.classList.toggle('active', tab.dataset.view === targetView)
+                );
+                
+                // Update active view
+                document.querySelectorAll('.auth-view').forEach(view => {
+                    const isActive = view.id === `${targetView}View`;
+                    view.classList.toggle('active-view', isActive);
+                    console.log('View', view.id, 'is now', isActive ? 'active' : 'inactive');
+                });
+            });
+        });
+        
+        function showLoginView() {
+            document.querySelectorAll('.auth-tab').forEach(tab => 
+                tab.classList.toggle('active', tab.dataset.view === 'login')
+            );
+            
+            document.querySelectorAll('.auth-view').forEach(view => {
+                const isActive = view.id === 'loginView';
+                view.classList.toggle('active-view', isActive);
+            });
+        }
+        
+        function showSignupView() {
+            document.querySelectorAll('.auth-tab').forEach(tab => 
+                tab.classList.toggle('active', tab.dataset.view === 'signup')
+            );
+            
+            document.querySelectorAll('.auth-view').forEach(view => {
+                const isActive = view.id === 'signupView';
+                view.classList.toggle('active-view', isActive);
+            });
+        }
+    </script>
+</body>
+</html>
