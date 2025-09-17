@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // --- State Management ---
     let currentClass = "9";
-    let currentView = "weekly";
+    let currentView = "daily";
 
     // --- DOM ELEMENTS ---
     const viewToggleButtons = document.querySelectorAll('.view-btn');
@@ -53,19 +53,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // --- RENDER FUNCTIONS ---
 
-    function renderWeeklyLog() {
+    function renderDailyLog() {
         logTableBody.innerHTML = '';
         const data = attendanceData[currentClass] || [];
-        // For weekly view, show the last 5 days of data as an example
+        // For daily view, show the last day of data
         const studentsInClass = studentsByClass[currentClass]?.length || 1;
-        const weeklyData = data.slice(-(studentsInClass * 5)); // 5 days of data
+        const dailyData = data.slice(-studentsInClass); // 1 day of data
 
-        if (weeklyData.length === 0) {
-            logTableBody.innerHTML = '<tr><td colspan="6">No attendance data available for this week.</td></tr>';
+        if (dailyData.length === 0) {
+            logTableBody.innerHTML = '<tr><td colspan="6">No attendance data available for today.</td></tr>';
             return;
         }
 
-        weeklyData.forEach(entry => {
+        dailyData.forEach(entry => {
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${entry.roll}</td>
@@ -119,14 +119,70 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    function renderCharts() {
+        const pieChart = document.getElementById('attendance-pie-chart');
+        const legend = document.getElementById('pie-chart-legend');
+        const barChart = document.getElementById('attendance-bar-chart');
+        const trendPeriodDisplay = document.getElementById('trend-period-display');
+
+        if (!pieChart || !legend || !barChart || !trendPeriodDisplay) return;
+
+        // --- Pie Chart (Always shows overall for the month) ---
+        const allDataForClass = attendanceData[currentClass] || [];
+        const presentCount = allDataForClass.filter(s => s.status === 'Present').length;
+        const total = allDataForClass.length;
+        
+        const presentPercentage = total > 0 ? Math.round((presentCount / total) * 100) : 0;
+        const absentPercentage = 100 - presentPercentage;
+
+        pieChart.style.background = `conic-gradient(var(--green-bright) 0% ${presentPercentage}%, var(--red-soft) ${presentPercentage}% 100%)`;
+        legend.innerHTML = `
+            <div class="legend-item"><div class="color-box" style="background: var(--green-bright);"></div>Present (${presentPercentage}%)</div>
+            <div class="legend-item"><div class="color-box" style="background: var(--red-soft);"></div>Absent (${absentPercentage}%)</div>`;
+
+        // --- Bar Chart (Trend) ---
+        barChart.innerHTML = '';
+        if (currentView === 'daily') {
+            trendPeriodDisplay.textContent = 'Today';
+            // For daily, show a single bar for today's attendance percentage
+            const studentsInClass = studentsByClass[currentClass]?.length || 1;
+            const dailyData = allDataForClass.slice(-studentsInClass);
+            const dailyPresent = dailyData.filter(s => s.status === 'Present').length;
+            const dailyTotal = dailyData.length || 1;
+            const dailyPercentage = Math.round((dailyPresent / dailyTotal) * 100);
+            barChart.innerHTML = `<div class="bar" style="height: ${dailyPercentage}%;" title="${dailyPercentage}% Present"><span class="label">Today</span></div>`;
+
+        } else { // monthly
+            trendPeriodDisplay.textContent = 'This Month';
+            // For monthly, show weekly trends
+            let trendLabels = ['Wk1', 'Wk2', 'Wk3', 'Wk4'];
+            let trendData = [0, 0, 0, 0];
+            const studentsInClass = studentsByClass[currentClass]?.length || 1;
+            const daysPerWeek = 5;
+            const recordsPerWeek = studentsInClass * daysPerWeek;
+
+            for (let i = 0; i < 4; i++) {
+                const weekData = allDataForClass.slice(i * recordsPerWeek, (i + 1) * recordsPerWeek);
+                if (weekData.length > 0) {
+                    const presentInWeek = weekData.filter(s => s.status === 'Present').length;
+                    trendData[i] = Math.round((presentInWeek / weekData.length) * 100);
+                }
+            }
+            
+            trendLabels.forEach((label, i) => {
+                barChart.innerHTML += `<div class="bar" style="height: ${trendData[i]}%;" title="${trendData[i]}% Present"><span class="label">${label}</span></div>`;
+            });
+        }
+    }
+
     function updateView() {
         currentClassDisplay.textContent = `Class ${currentClass}`;
         
-        if (currentView === 'weekly') {
+        if (currentView === 'daily') {
             logTableContainer.style.display = 'block';
             summaryTableContainer.style.display = 'none';
-            currentViewDisplay.textContent = 'Weekly';
-            renderWeeklyLog();
+            currentViewDisplay.textContent = 'Daily';
+            renderDailyLog();
         } else { // monthly
             logTableContainer.style.display = 'none';
             summaryTableContainer.style.display = 'block';
@@ -135,6 +191,10 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         // A small animation trigger
         const tablePanel = document.querySelector('.table-panel');
+
+        // Render charts after view is updated
+        renderCharts();
+
         tablePanel.classList.remove('animate-table-update');
         void tablePanel.offsetWidth;
         tablePanel.classList.add('animate-table-update');
