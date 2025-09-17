@@ -68,13 +68,13 @@
             <header class="main-header">
                 <div class="menu-toggle"><i class="fas fa-bars"></i></div>
                 <div class="header-details">
-                    <div class="teacher-welcome">
+                    <div class="teacher-info">
                         <i class="fas fa-chalkboard-teacher"></i>
                         <span>Welcome, <strong id="userName">Teacher</strong></span>
                     </div>
                     <div class="institution-info">
                         <i class="fas fa-school"></i>
-                        <span>Maple High | Grade 10 Physics</span>
+                        <span id="institutionDetails">Institution | Subject</span>
                     </div>
                 </div>
             </header>
@@ -208,6 +208,14 @@
         // Display user's name
         if (user.name) {
             document.getElementById('userName').textContent = user.name;
+        }
+        
+        // Display institution and subject
+        const institutionDetails = document.getElementById('institutionDetails');
+        if (institutionDetails && user.institution && user.subject) {
+            institutionDetails.textContent = `${user.institution} | ${user.subject}`;
+        } else if (institutionDetails && user.institution) {
+            institutionDetails.textContent = user.institution;
         }
         
         // Handle logout

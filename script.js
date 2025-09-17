@@ -521,12 +521,13 @@ document.addEventListener("DOMContentLoaded", function() {
             const name = document.getElementById('parentName').value.trim();
             const email = document.getElementById('parentEmail').value.trim();
             const phone = document.getElementById('parentPhone').value.trim();
+            const studentName = document.getElementById('studentName').value.trim();
             const studentId = document.getElementById('studentId').value.trim();
             const password = document.getElementById('parentPassword').value;
             const confirmPassword = document.getElementById('parentConfirmPassword').value;
             
             // Basic validation
-            if (!name || !email || !phone || !studentId || !password || !confirmPassword) {
+            if (!name || !email || !phone || !studentName || !studentId || !password || !confirmPassword) {
                 showNotification('Please fill in all fields', true);
                 return;
             }
@@ -547,6 +548,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     email,
                     password,
                     phone,
+                    studentName,
                     studentId,
                     role: 'parent'
                 };
@@ -585,13 +587,14 @@ document.addEventListener("DOMContentLoaded", function() {
             const name = teacherForm.querySelector('#teacherName').value.trim();
             const email = teacherForm.querySelector('#teacherEmail').value.trim();
             const phone = teacherForm.querySelector('#teacherPhone').value.trim();
+            const institution = teacherForm.querySelector('#teacherInstitution').value.trim();
             const password = teacherForm.querySelector('#teacherPassword').value;
             const confirmPassword = teacherForm.querySelector('#teacherConfirmPassword').value;
             const subject = teacherForm.querySelector('#teacherSubject').value.trim();
             const qualification = teacherForm.querySelector('#teacherQualification').value.trim();
             
             // Basic validation
-            if (!name || !email || !phone || !password || !confirmPassword || !subject || !qualification) {
+            if (!name || !email || !phone || !password || !confirmPassword || !subject || !qualification || !institution) {
                 showNotification('Please fill in all fields', true);
                 return;
             }
@@ -623,6 +626,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     password,
                     phone,
                     subject,
+                    institution,
                     qualification,
                     role: 'teacher'
                 };
