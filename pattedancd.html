@@ -12,6 +12,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <link rel="stylesheet" href="parent_attendance.css">
+    <style>
+        /* Styles for the new monthly summary table */
+        .percentage-bar-container {
+            position: relative;
+            width: 100%;
+            height: 25px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .percentage-bar {
+            height: 100%;
+            transition: width 0.5s ease-in-out;
+        }
+        .percentage-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            color: #212529;
+        }
+    </style>
 </head>
 <body>
 
@@ -25,6 +48,22 @@
                     <a href="parent.html" class="nav-link">
                         <i class="fas fa-home"></i>
                         <span>Home</span>
+                    </a>
+                    <a href="accademics.html" class="nav-link">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <span>Academics</span>
+                    </a>
+                    <a href="pattedancd.html" class="nav-link active-link">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Attendance</span>
+                    </a>
+                    <a href="announcement.html" class="nav-link">
+                        <i class="fas fa-bullhorn"></i>
+                        <span>Announcements</span>
+                    </a>
+                    <a href="presult.html" class="nav-link">
+                        <i class="fas fa-poll-h"></i>
+                        <span>Results</span>
                     </a>
                 </nav>
             </div>
@@ -96,25 +135,24 @@
                             </div>
                         </div>
                         <div class="table-panel animate-on-load">
-                            <h3>Monthly Log</h3>
+                            <h3>Weekly Summary</h3>
                             <div class="table-container">
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>Date</th>
-                                            <th>Entry Time</th>
-                                            <th>Exit Time</th>
-                                            <th>Status</th>
+                                            <th>Week</th>
+                                            <th>Present Days</th>
+                                            <th>Absent Days</th>
+                                            <th>Attendance %</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="monthly-table-body">
+                                    <tbody id="monthly-summary-table-body">
                                         </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </section>
         </main>
     </div>

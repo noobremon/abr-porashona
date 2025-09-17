@@ -12,6 +12,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <link rel="stylesheet" href="teacher_attendance.css">
+    <style>
+        /* Styles for the new monthly summary table */
+        .percentage-bar-container {
+            position: relative;
+            width: 100%;
+            height: 25px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .percentage-bar {
+            height: 100%;
+            transition: width 0.5s ease-in-out;
+        }
+        .percentage-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            color: #212529;
+        }
+    </style>
 </head>
 <body>
     <div class="teacher-attendance-container">
@@ -80,19 +103,34 @@
 
                         <div class="table-panel animate-on-load">
                             <h3>Attendance Log: <span id="current-class-display">Class 9</span> (<span id="current-view-display">Weekly</span>)</h3>
-                            <div class="table-container">
+                            <div id="log-table-container" class="table-container">
                                 <table>
                                     <thead>
                                         <tr>
                                             <th data-sort="roll">Roll No. <i class="fas fa-sort"></i></th>
                                             <th data-sort="name">Student Name <i class="fas fa-sort"></i></th>
-                                            <th data-sort="entry">Entry Time <i class="fas fa-sort"></i></th>
-                                            <th data-sort="exit">Exit Time <i class="fas fa-sort"></i></th>
+                                            <th data-sort="date">Date <i class="fas fa-sort"></i></th>
                                             <th data-sort="status">Status <i class="fas fa-sort"></i></th>
                                         </tr>
                                     </thead>
                                     <tbody id="attendance-table-body">
                                         </tbody>
+                                </table>
+                            </div>
+                            <div id="summary-table-container" class="table-container" style="display: none;">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th data-sort="roll">Roll No. <i class="fas fa-sort"></i></th>
+                                            <th data-sort="name">Student Name <i class="fas fa-sort"></i></th>
+                                            <th data-sort="present">Present Days <i class="fas fa-sort"></i></th>
+                                            <th data-sort="absent">Absent Days <i class="fas fa-sort"></i></th>
+                                            <th data-sort="percentage">Attendance % <i class="fas fa-sort"></i></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="summary-table-body">
+                                        <!-- Monthly summary data will be populated here by JS -->
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
