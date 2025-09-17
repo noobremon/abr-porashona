@@ -582,13 +582,13 @@ document.addEventListener("DOMContentLoaded", function() {
         teacherForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const name = document.getElementById('teacherName').value.trim();
-            const email = document.getElementById('teacherEmail').value.trim();
-            const phone = document.getElementById('teacherPhone').value.trim();
-            const password = document.getElementById('teacherPassword').value;
-            const confirmPassword = document.getElementById('teacherConfirmPassword').value;
-            const subject = document.getElementById('teacherSubject').value.trim();
-            const qualification = document.getElementById('teacherQualification').value.trim();
+            const name = teacherForm.querySelector('#teacherName').value.trim();
+            const email = teacherForm.querySelector('#teacherEmail').value.trim();
+            const phone = teacherForm.querySelector('#teacherPhone').value.trim();
+            const password = teacherForm.querySelector('#teacherPassword').value;
+            const confirmPassword = teacherForm.querySelector('#teacherConfirmPassword').value;
+            const subject = teacherForm.querySelector('#teacherSubject').value.trim();
+            const qualification = teacherForm.querySelector('#teacherQualification').value.trim();
             
             // Basic validation
             if (!name || !email || !phone || !password || !confirmPassword || !subject || !qualification) {
