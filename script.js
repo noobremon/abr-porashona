@@ -521,7 +521,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const name = document.getElementById('parentName').value.trim();
             const email = document.getElementById('parentEmail').value.trim();
             const phone = document.getElementById('parentPhone').value.trim();
-            const studentName = document.getElementById('studentName').value.trim();
+            const studentName = document.getElementById('parentStudentName').value.trim();
             const studentId = document.getElementById('studentId').value.trim();
             const password = document.getElementById('parentPassword').value;
             const confirmPassword = document.getElementById('parentConfirmPassword').value;

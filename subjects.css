@@ -1,0 +1,98 @@
+/* --- Root Variables and Global Styles --- */
+:root {
+    --purple-mid: #6c5ce7;
+    --blue-mid: #4a90e2;
+    --green-bright: #55efc4;
+    --green-dark: #00b894;
+    --red-soft: #ff7675;
+    --orange-soft: #fbd38d;
+    --text-light: #dfe6e9;
+    --text-dark: #2d3436;
+    --bg-main: #f5f6fa;
+    --bg-sidebar: #2d3436;
+    --font-family-pixel: 'Press Start 2P', cursive;
+    --sidebar-width: 280px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: sans-serif; background-color: var(--bg-main); color: var(--text-dark); line-height: 1.6; }
+.subjects-container { display: flex; min-height: 100vh; }
+
+/* ===== Sidebar (Consistent) ===== */
+.sidebar {
+    width: var(--sidebar-width); background-color: var(--bg-sidebar); color: var(--text-light);
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 20px 15px; transition: transform 0.3s ease-in-out; border-right: 3px solid #1e2224;
+}
+.sidebar-header .logo { font-family: var(--font-family-pixel); font-size: 1.5rem; text-align: center; color: var(--green-bright); text-shadow: 2px 2px 0 var(--purple-mid); margin-bottom: 30px; }
+.sidebar-nav { display: flex; flex-direction: column; gap: 10px; flex-grow: 1; }
+.nav-link { display: flex; align-items: center; gap: 15px; padding: 15px; border-radius: 8px; font-family: var(--font-family-pixel); font-size: 0.8rem; color: var(--text-light); text-decoration: none; transition: all 0.2s; border: 2px solid transparent; cursor: pointer; }
+.nav-link i { font-size: 1.2rem; width: 25px; text-align: center; }
+.nav-link:hover { background-color: rgba(108, 92, 231, 0.3); border-color: var(--purple-mid); }
+.nav-link.active-link { background-color: var(--purple-mid); color: white; box-shadow: inset -4px -4px 0px 0px rgba(0,0,0,0.2); }
+.btn-logout { font-family: var(--font-family-pixel); font-size: 0.8rem; padding: 15px; color: white; background-color: #e74c3c; border: 3px solid #c0392b; box-shadow: inset -3px -3px 0 0 rgba(0,0,0,0.3); cursor: pointer; text-decoration: none; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 10px; }
+.btn-logout:hover { filter: brightness(1.1); }
+
+/* ===== Main Content Styles ===== */
+.main-content { flex-grow: 1; display: flex; flex-direction: column; }
+.main-header { display: flex; align-items: center; justify-content: space-between; padding: 15px 30px; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 10; }
+.menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+.header-details { text-align: right; }
+.student-info { font-family: var(--font-family-pixel); font-size: 1rem; color: var(--purple-mid); }
+.tagline { font-style: italic; color: #666; font-size: 0.9rem; margin-top: 5px; }
+
+.content-area { padding: 30px; flex-grow: 1; }
+.view { display: none; }
+.view.active-view { display: block; animation: fadeIn 0.5s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Subject Selection View */
+.filter-bar { display: flex; gap: 15px; margin-bottom: 25px; }
+.filter-bar select { font-family: var(--font-family-pixel); font-size: 0.8rem; padding: 10px; border: 2px solid #ccc; border-radius: 6px; }
+
+.subjects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+.subject-card { background-color: transparent; width: 100%; height: 300px; perspective: 1000px; cursor: pointer; }
+.subject-card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-d; }
+.subject-card:hover .subject-card-inner { transform: rotateY(180deg); }
+.subject-card-front, .subject-card-back {
+    position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden;
+    border-radius: 12px; border-width: 4px; border-style: solid;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+}
+.subject-card-front { background: white; }
+.subject-card-front i { font-size: 4rem; margin-bottom: 20px; }
+.subject-card-front h3 { font-family: var(--font-family-pixel); font-size: 1.2rem; }
+.subject-card-back { transform: rotateY(180deg); color: white; }
+.subject-card-back h4 { font-family: var(--font-family-pixel); font-size: 1rem; }
+.btn-start {
+    font-family: var(--font-family-pixel); font-size: 0.8rem; padding: 10px 20px;
+    margin-top: 20px; background: white; border: none; border-radius: 6px; cursor: pointer;
+}
+
+/* Subject Dashboard View */
+.dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.btn-back { font-family: var(--font-family-pixel); font-size: 0.8rem; background: none; border: none; color: var(--blue-mid); cursor: pointer; }
+#subject-title-header { font-family: var(--font-family-pixel); font-size: 1.5rem; }
+.dashboard-tabs { display: flex; gap: 10px; border-bottom: 3px solid #eee; margin-bottom: 20px; }
+.tab-btn { background: none; border: none; padding: 10px 15px; font-family: var(--font-family-pixel); font-size: 0.7rem; cursor: pointer; border-bottom: 3px solid transparent; }
+.tab-btn.active { border-bottom-color: var(--purple-mid); color: var(--purple-mid); }
+.dashboard-content { animation: fadeIn 0.4s; }
+.content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+.content-card { background: white; padding: 20px; border-radius: 8px; border: 2px solid #eee; }
+.content-card h4 { font-family: var(--font-family-pixel); font-size: 0.9rem; }
+
+/* Modal */
+.modal { display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(5px); }
+.modal-content { background: var(--bg-main); margin: 15% auto; padding: 30px; border: 4px solid var(--purple-mid); border-radius: 12px; width: 90%; max-width: 500px; position: relative; }
+.close-button { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+
+/* Responsive */
+@media(max-width: 992px) {
+    .sidebar { position: fixed; transform: translateX(-100%); z-index: 100; }
+    .sidebar.active { transform: translateX(0); }
+    .menu-toggle { display: block; }
+}
+@media(max-width: 768px) {
+    .main-header { flex-direction: column; align-items: flex-end; }
+    .student-info, .tagline { text-align: right; }
+}
