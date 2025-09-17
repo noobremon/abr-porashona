@@ -2,12 +2,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // --- Mock Data ---
     const studentsByClass = {
+        '6': [
+            { roll: 601, name: 'Aarav Patel' }, { roll: 602, name: 'Isha Reddy' },
+        ],
+        '7': [
+            { roll: 701, name: 'Vihaan Joshi' }, { roll: 702, name: 'Myra Desai' },
+        ],
+        '8': [
+            { roll: 801, name: 'Arjun Nair' }, { roll: 802, name: 'Zara Khan' },
+        ],
         '9': [
             { roll: 901, name: 'Aryan Sharma' }, { roll: 902, name: 'Priya Singh' },
             { roll: 903, name: 'Rohan Verma' }, { roll: 904, name: 'Sneha Gupta' },
         ],
         '10': [
             { roll: 1001, name: 'Karan Singh' }, { roll: 1002, name: 'Diya Patel' },
+        ],
+        '11': [
+            { roll: 1101, name: 'Advik Mehta' }, { roll: 1102, name: 'Ananya Iyer' },
+        ],
+        '12': [
+            { roll: 1201, name: 'Kabir Rao' }, { roll: 1202, name: 'Saanvi Pillai' },
         ]
     };
 
@@ -32,10 +47,10 @@ document.addEventListener("DOMContentLoaded", function() {
         return data;
     }
     
-    const attendanceData = {
-        '9': generateMockDataForClass('9'),
-        '10': generateMockDataForClass('10'),
-    };
+    const attendanceData = {};
+    Object.keys(studentsByClass).forEach(classId => {
+        attendanceData[classId] = generateMockDataForClass(classId);
+    });
 
     // --- State Management ---
     let currentClass = "9";
@@ -43,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // --- DOM ELEMENTS ---
     const viewToggleButtons = document.querySelectorAll('.view-btn');
-    const classLinks = document.querySelectorAll('.sub-link');
+    const classSelect = document.getElementById('class-select');
     const logTableContainer = document.getElementById('log-table-container');
     const summaryTableContainer = document.getElementById('summary-table-container');
     const logTableBody = document.getElementById('attendance-table-body');
@@ -210,18 +225,16 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    classLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            classLinks.forEach(l => l.classList.remove('active-class-link'));
-            link.classList.add('active-class-link');
-            currentClass = link.dataset.class;
+    if (classSelect) {
+        classSelect.addEventListener('change', (e) => {
+            currentClass = e.target.value;
             updateView();
         });
-    });
+    }
 
     // --- Initial Load ---
-    const defaultClassLink = document.querySelector(`.sub-link[data-class="${currentClass}"]`);
-    if (defaultClassLink) { defaultClassLink.classList.add('active-class-link'); }
+    if (classSelect) {
+        classSelect.value = currentClass;
+    }
     updateView(); // Initial render
 });

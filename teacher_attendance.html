@@ -45,22 +45,23 @@
                 </div>
                 <nav class="sidebar-nav">
                     <a href="teacher.html" class="nav-link">
-                        <i class="fas fa-home"></i><span>Home</span>
+                        <i class="fas fa-tachometer-alt"></i><span>Dashboard</span>
                     </a>
-                    <div class="nav-expandable open">
-                        <div class="nav-link expandable-toggle">
-                            <i class="fas fa-chalkboard"></i><span>Classes</span>
-                        </div>
-                        <div class="expandable-menu scrollable-menu">
-                            <a href="#" class="sub-link" data-class="6">Class 6</a>
-                            <a href="#" class="sub-link" data-class="7">Class 7</a>
-                            <a href="#" class="sub-link" data-class="8">Class 8</a>
-                            <a href="#" class="sub-link" data-class="9">Class 9</a>
-                            <a href="#" class="sub-link" data-class="10">Class 10</a>
-                            <a href="#" class="sub-link" data-class="11">Class 11</a>
-                            <a href="#" class="sub-link" data-class="12">Class 12</a>
-                        </div>
-                    </div>
+                    <a href="teacher_attendance.html" class="nav-link active-link">
+                        <i class="fas fa-user-check"></i><span>Attendance</span>
+                    </a>
+                    <a href="teacher_announcement.html" class="nav-link">
+                        <i class="fas fa-bullhorn"></i><span>Announcements</span>
+                    </a>
+                    <a href="publish.html" class="nav-link">
+                        <i class="fas fa-poll"></i><span>Results</span>
+                    </a>
+                    <a href="track.html" class="nav-link">
+                        <i class="fas fa-chart-bar"></i><span>Student Tracking</span>
+                    </a>
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-comments"></i><span>Messaging</span>
+                    </a>
                 </nav>
             </div>
             <div class="sidebar-footer">
@@ -91,6 +92,18 @@
                 <div class="main-grid">
                     <div class="attendance-section">
                         <div class="filter-bar">
+                             <div class="class-filter-container">
+                                 <label for="class-select">Class:</label>
+                                 <select id="class-select">
+                                     <option value="6">Class 6</option>
+                                     <option value="7">Class 7</option>
+                                     <option value="8">Class 8</option>
+                                     <option value="9" selected>Class 9</option>
+                                     <option value="10">Class 10</option>
+                                     <option value="11">Class 11</option>
+                                     <option value="12">Class 12</option>
+                                 </select>
+                             </div>
                              <div class="view-toggle-buttons">
                                 <button class="view-btn active" data-view-type="daily">Daily</button>
                                 <button class="view-btn" data-view-type="monthly">Monthly</button>
@@ -136,19 +149,20 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="analytics-panel animate-on-load">
-                            <div class="chart-card">
-                                <h4>Overall Attendance</h4>
-                                <div class="pie-chart-container">
-                                    <div id="attendance-pie-chart" class="pie-chart"></div>
-                                    <div id="pie-chart-legend" class="pie-chart-legend"></div>
+                    </div>
+
+                    <div class="analytics-panel animate-on-load">
+                        <div class="chart-card">
+                            <h4>Overall Attendance</h4>
+                            <div class="pie-chart-container">
+                                <div id="attendance-pie-chart" class="pie-chart"></div>
+                                <div id="pie-chart-legend" class="pie-chart-legend"></div>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h4>Trend (<span id="trend-period-display">Today</span>)</h4>
+                            <div id="attendance-bar-chart" class="bar-chart-container">
                                 </div>
-                            </div>
-                            <div class="chart-card">
-                                <h4>Trend (<span id="trend-period-display">Today</span>)</h4>
-                                <div id="attendance-bar-chart" class="bar-chart-container">
-                                    </div>
-                            </div>
                         </div>
                     </div>
 
