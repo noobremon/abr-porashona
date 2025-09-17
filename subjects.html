@@ -32,17 +32,14 @@
         <main class="main-content">
             <header class="main-header">
                 <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-                <div class="header-details">
-                    <div id="student-info" class="student-info">
-                        </div>
-                    <p class="tagline">Keep exploring, learning is fun!</p>
-                </div>
+                <div id="header-details" class="header-details">
+                    </div>
             </header>
 
             <section class="content-area">
                 <div id="subject-selection-view" class="view active-view">
                     <div class="filter-bar">
-                        <select id="class-filter"><option value="9">Class 9</option><option value="10">Class 10</option></select>
+                        <select id="class-filter"><option value="10">Class 10</option><option value="9">Class 9</option></select>
                         <select id="board-filter"><option value="CBSE">CBSE Board</option></select>
                     </div>
                     <div id="subjects-grid" class="subjects-grid">
@@ -54,23 +51,31 @@
                         <button id="back-to-subjects-btn" class="btn-back"><i class="fas fa-arrow-left"></i> All Subjects</button>
                         <div id="subject-title-header"></div>
                     </div>
-                    <div class="dashboard-tabs">
-                        <button class="tab-btn active" data-tab="lessons">📖 Lessons</button>
-                        <button class="tab-btn" data-tab="quizzes">🎮 Quizzes</button>
-                        <button class="tab-btn" data-tab="assignments">📝 Assignments</button>
-                        <button class="tab-btn" data-tab="progress">📊 Progress</button>
-                        <button class="tab-btn" data-tab="badges">🏆 Badges</button>
-                    </div>
-                    <div id="dashboard-content" class="dashboard-content">
+                    
+                    <div class="dashboard-layout">
+                        <div id="dashboard-main-content" class="dashboard-main-content">
+                            <div class="dashboard-tabs">
+                                <button class="tab-btn active" data-tab="lessons">📖 Lessons</button>
+                                <button class="tab-btn" data-tab="quizzes">🎮 Quizzes</button>
+                                <button class="tab-btn" data-tab="assignments">📝 Assignments</button>
+                            </div>
+                            <div id="dashboard-tab-content" class="dashboard-tab-content">
+                                </div>
                         </div>
+
+                        <div id="dashboard-right-sidebar" class="dashboard-right-sidebar">
+                            <div id="analytics-panel" class="panel"></div>
+                            <div id="badges-panel" class="panel"></div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
     </div>
 
-    <div id="quiz-modal" class="modal">
+    <div id="game-modal" class="modal">
         <div class="modal-content">
-            <span class="close-button">&times;</span>
+            <span id="modal-close-btn" class="close-button">&times;</span>
             <div id="modal-body"></div>
         </div>
     </div>
