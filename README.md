@@ -1,4 +1,4 @@
-# 📚 ABR Porashona
+# 📚 EduNet
 
 A modern, interactive academic progress and school management dashboard for students, parents, and teachers. This project provides a seamless way to track learning, attendance, results, and more—all in one place!
 
